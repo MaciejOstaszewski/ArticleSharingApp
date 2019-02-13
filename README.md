@@ -170,4 +170,4 @@ To run ElasticSearch type:
 docker-compose -f src/main/docker/elasticsearch.yml up -d
 
 
-<img src="https://github.com/MaciejOstaszewski/ArticleSharingApp/tree/master/src/main/resources/images/asa1.jpg" title="perview">
+<img src="https://raw.githubusercontent.com/MaciejOstaszewski/ArticleSharingApp/master/src/main/resources/images/asa1.jpg" title="perview">
