@@ -1,0 +1,26 @@
+
+{
+    "articleSharingApp": {
+        "message" : {
+            "home": {
+                "title": "Messages",
+                "createLabel": "Dodaj Message",
+                "createOrEditLabel": "Dodaj lub edytuj: Message",
+                "search": "Szukaj Message"
+            },
+            "created": "Utworzono nowy Message z identyfikatorem {{ param }}",
+            "updated": "Uaktualniono Message z identyfikatorem {{ param }}",
+            "deleted": "Usunięto Message z identyfikatorem {{ param }}",
+            "delete": {
+                "question": "Czy na pewno chcesz usunąć Message {{ id }}?"
+            },
+            "detail": {
+                "title": "Message"
+            },
+            "content": "Content",
+            "creationDate": "Creation Date",
+            "sender": "Sender",
+            "receiver": "Receiver"
+        }
+    }
+}

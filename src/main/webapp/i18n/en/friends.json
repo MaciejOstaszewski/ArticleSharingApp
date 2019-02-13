@@ -1,0 +1,19 @@
+{
+    "articleSharingApp": {
+        "friends": {
+            "search": "Search new friends",
+            "title": "Add friends",
+            "name": "Nick",
+            "firstname": "First name",
+            "lastname": "Last name",
+            "invite": "Send invite",
+            "invited": "Invited",
+            "myFriends": "My friends",
+            "searchFriends": "Search new friends",
+            "delete": "Delete from friends",
+            "friendsList": "Friends List",
+            "strangersList": "Add new friends",
+            "accept": "Accept invite"
+        }
+    }
+}

@@ -1,0 +1,69 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="article">
+            <h2><span jhiTranslate="articleSharingApp.article.detail.title">Article</span> {{article.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="articleSharingApp.article.title">Title</span></dt>
+                <dd>
+                    <span>{{article.title}}</span>
+                </dd>
+                <dt><span jhiTranslate="articleSharingApp.article.creationDate">Creation Date</span></dt>
+                <dd>
+                    <span>{{article.creationDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="articleSharingApp.article.modificationDate">Modification Date</span></dt>
+                <dd>
+                    <span>{{article.modificationDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="articleSharingApp.article.content">Content</span></dt>
+                <dd>
+                    <span>{{article.content}}</span>
+                </dd>
+                <dt><span jhiTranslate="articleSharingApp.article.imageURL">Image URL</span></dt>
+                <dd>
+                    <span>{{article.imageURL}}</span>
+                </dd>
+                <dt><span jhiTranslate="articleSharingApp.article.views">Views</span></dt>
+                <dd>
+                    <span>{{article.views}}</span>
+                </dd>
+                <dt><span jhiTranslate="articleSharingApp.article.user">User</span></dt>
+                <dd>
+                    {{article.userLogin}}
+                </dd>
+                <dt><span jhiTranslate="articleSharingApp.article.category">Category</span></dt>
+                <dd>
+                    <div *ngIf="article.categoryId">
+                        <a [routerLink]="['/category', article.categoryId, 'view']">{{article.categoryId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="articleSharingApp.article.tag">Tag</span></dt>
+                <dd>
+                    <span *ngFor="let tag of article.tags; let last = last">
+                        <a [routerLink]="['/tag', tag?.id, 'view' ]">{{tag.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="articleSharingApp.article.interest">Interest</span></dt>
+                <dd>
+                    <span *ngFor="let interest of article.interests; let last = last">
+                        <a [routerLink]="['/interest', interest?.id, 'view' ]">{{interest.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/article', article.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+<div class="row">
+    <div class="col-sm-3">
+        <tbody class="friends-list">
+            <ng-container *ngFor="let user of users ;trackBy: trackId">
+                <tr *ngIf="!checkUser(user)" [ngClass]="{selected: this.toggleFriend(user.id)}" class="friend">
+                    <div class="friend" (click)="setFocus(user.id)"><img [src]="user.avatar" class="profile-image img-circle" alt="Avatar"> {{user.login}} </div>
+                </tr>
+
+            </ng-container>
+        </tbody>
+    </div>
+    <div class="col-sm-9">
+        <label *ngIf="!isAnyMessage()" class="form-control-label" jhiTranslate="articleSharingApp.messages.invite"
+               for="field_content">Content</label>
+
+        <div *ngIf="isAnyMessage()">
+            <ng-container *ngFor="let message of messages ;trackBy: trackId">
+                <div class="current-logged-user-message message" *ngIf="isMyMessage(message); else showFriendMessage"><span>{{ message.content }}</span></div>
+                <ng-template #showFriendMessage>
+                    <div class="friend-message message"><span class="message-content">{{ message.content }}</span></div>
+                </ng-template>
+            </ng-container>
+        </div>
+        <form name="editForm" (ngSubmit)="send()" (keydown)="quickSend($event)">
+
+
+                   <textarea type="text" class="form-control" name="commentContent" id="field_content"
+                             [(ngModel)]="messageContent" minlength="1" maxlength="1000"></textarea>
+
+
+
+
+            <div>
+                <button type="submit" id="save-entity" class="btn btn-primary" style="margin-top: 10px;">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="articleSharingApp.messages.send">send</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

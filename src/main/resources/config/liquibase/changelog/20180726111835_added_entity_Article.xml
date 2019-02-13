@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <property name="now" value="now()" dbms="h2"/>
+
+    <property name="now" value="current_timestamp" dbms="postgresql"/>
+
+    <property name="floatType" value="float4" dbms="postgresql, h2"/>
+    <property name="floatType" value="float" dbms="mysql, oracle, mssql"/>
+
+    <!--
+        Added the entity Article.
+    -->
+    <changeSet id="20180726111835-1" author="jhipster">
+        <createTable tableName="article">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="title" type="varchar(300)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="creation_date" type="timestamp">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="modification_date" type="timestamp">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="content" type="varchar(50000)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="image_url" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="views" type="integer">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="active" type="boolean" valueBoolean="false">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="user_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="category_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
+        </createTable>
+
+        <createTable tableName="article_tag">
+            <column name="tags_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="articles_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="articles_id, tags_id" tableName="article_tag"/>
+
+        <createTable tableName="article_interest">
+            <column name="interests_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="articles_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="articles_id, interests_id" tableName="article_interest"/>
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/article.csv"
+                  separator=";"
+                  tableName="article"/>
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/article_interests.csv"
+                  separator=";"
+                  tableName="article_interest"/>
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/article_tags.csv"
+                  separator=";"
+                  tableName="article_tag"/>
+
+
+    </changeSet>
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
+</databaseChangeLog>

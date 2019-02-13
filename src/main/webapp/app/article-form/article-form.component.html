@@ -1,0 +1,126 @@
+<div class="row">
+    <div class="col-md-3">
+
+    </div>
+    <div class="col-md-6">
+
+
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-article-heading" jhiTranslate="articleSharingApp.article.home.createArticleLabel"></h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!article.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                           [(ngModel)]="article.id" readonly/>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="articleSharingApp.article.imageURL" for="field_imageURL"></label>
+
+                        <input type="file" (change)="selectFile($event)"
+                               class="form-control" name="imageURL" id="field_imageURL"
+                               [(ngModel)]="article.imageURL" required
+                        >
+
+                    <div [hidden]="!(editForm.controls.imageURL?.dirty && editForm.controls.imageURL?.invalid)">
+                        <small class="form-text text-danger"
+                               [hidden]="!editForm.controls.imageURL?.errors?.required"
+                               jhiTranslate="entity.validation.required">
+                            This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="articleSharingApp.article.title" for="field_title">Title</label>
+                    <input type="text" class="form-control" name="title" id="field_title"
+                           [(ngModel)]="article.title" required minlength="1" maxlength="300"/>
+                    <div [hidden]="!(editForm.controls.title?.dirty && editForm.controls.title?.invalid)">
+                        <small class="form-text text-danger"
+                               [hidden]="!editForm.controls.title?.errors?.required"
+                               jhiTranslate="entity.validation.required">
+                            This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               [hidden]="!editForm.controls.title?.errors?.minlength"
+                               jhiTranslate="entity.validation.minlength" translateValues="{ min: 1 }">
+                            This field is required to be at least 1 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               [hidden]="!editForm.controls.title?.errors?.maxlength"
+                               jhiTranslate="entity.validation.maxlength" translateValues="{ max: 300 }">
+                            This field cannot be longer than 30 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="articleSharingApp.article.content"
+                    for="field_content"></label>
+                    <quill-editor class="form-control custom-control" name="content" id="field_content"
+                                  [(ngModel)]="article.content" required></quill-editor>
+                    <div [hidden]="!(editForm.controls.content?.dirty && editForm.controls.content?.invalid)">
+                        <small class="form-text text-danger"
+                                [hidden]="!editForm.controls.content?.errors?.required"
+                                jhiTranslate="entity.validation.required">
+                             This field is required.
+                        </small>
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="articleSharingApp.article.category"
+                           for="field_category">Category</label>
+                    <select required class="form-control" id="field_category" name="category" [(ngModel)]="article.categoryId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="categoryOption.id"
+                                *ngFor="let categoryOption of categories; trackBy: trackCategoryById">
+                            {{categoryOption.name}}
+                        </option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label jhiTranslate="articleSharingApp.article.tag" for="field_tag">Tag</label><br>
+                    <ss-multiselect-dropdown class="form-control custom-control" required id="field_tag" [options]="tags"
+                                             [(ngModel)]="selectedTags" [ngModelOptions]="{standalone: true}"></ss-multiselect-dropdown>
+                </div>
+                <div class="form-group">
+                    <label jhiTranslate="articleSharingApp.article.interest" for="field_interest">Interest</label><br>
+                    <ss-multiselect-dropdown class="form-control custom-control" required id="field_interest" [options]="interests"
+                                             [(ngModel)]="selectedInterests" [ngModelOptions]="{standalone: true}"></ss-multiselect-dropdown>
+                </div>
+            </div>
+            <div *ngIf="currentFileUpload" class="progress">
+                <div class="progress-bar progress-bar-success progress-bar-striped"
+                     role="progressbar" attr.aria-valuenow="{{progress.percentage}}"
+                     aria-valuemin="0" aria-valuemax="100"
+                     [ngStyle]="{width:progress.percentage+'%'}">
+                    <span>Uploading main image: </span>{{progress.percentage}}%
+                </div>
+            </div>
+            <div *ngIf="images" class="progress">
+                <div class="progress-bar progress-bar-success progress-bar-striped"
+                     role="progressbar" attr.aria-valuenow="{{progress.percentage}}"
+                     aria-valuemin="0" aria-valuemax="100"
+                     [ngStyle]="{width:progress.percentage+'%'}">
+                    <span style="color: black; font-size: 80%;">Uploading article images: </span>{{progress.percentage}}%
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving"
+                        class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-3">
+
+    </div>
+</div>

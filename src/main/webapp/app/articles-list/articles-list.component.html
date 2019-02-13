@@ -1,0 +1,83 @@
+<div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-6">
+
+        <h1  *ngIf="active; else waiting" class="display-4" jhiTranslate="home.title">Welcome</h1>
+        <ng-template #waiting>
+            <h1  class="display-4" jhiTranslate="home.waitingTitle"></h1>
+        </ng-template>
+
+
+        <div [ngSwitch]="isAuthenticated()">
+
+
+            <div class="alert alert-warning" *ngSwitchCase="false">
+
+                <a class="alert-link" (click)="login()" jhiTranslate="global.messages.info.register.singin"></a>
+                <span jhiTranslate="global.messages.info.register.prefix"></span>
+                <a class="alert-link" routerLink="register" jhiTranslate="global.messages.info.register.join"></a>
+                <span jhiTranslate="global.messages.info.register.suffix"></span>
+            </div>
+        </div>
+
+        <div class="row" *ngIf="active">
+            <div class="col-sm-12">
+                <form name="searchForm" class="form-inline">
+                    <div class="input-group w-100 mt-3">
+                        <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'articleSharingApp.article.home.search' | translate }}">
+                        <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+                            <fa-icon [icon]="'search'"></fa-icon>
+                        </button>
+                        <button class="input-group-append btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                            <fa-icon [icon]="'trash-alt'"></fa-icon>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <br/>
+
+        <div *ngFor="let article of (articles | articleFilter ) ;trackBy: trackId">
+            <div class="article-home-container" [routerLink]="['/article/detail', article.id]">
+                <h2>{{ article.title }}</h2>
+                <div style="color: #105cb6;">
+                    <span class="article-header"><span class="article-header-translate" jhiTranslate="articleSharingApp.article.detail.added"></span> {{ article.userLogin }} </span>
+                    <span class="article-header"><span class="article-header-translate" jhiTranslate="articleSharingApp.article.detail.creationTime"></span> {{ article.creationDate | date:'short' }} </span>
+                    <span class="article-header"><span class="article-header-translate" jhiTranslate="articleSharingApp.article.detail.modified"></span> {{ article.modificationDate | date:'short'  }} </span>
+                    <span class="article-header"><fa-icon [icon]="'eye'"></fa-icon> {{ article.views }} </span>
+                </div>
+                <div>
+                    <span class="category" (click)="loadFromCategory(article.categoryId, active)"> {{ article.categoryName }} </span>
+                    <span class="tags" (click)="loadFromTag(tag.id, active)" *ngFor="let tag of article.tags"> #{{tag.name}} </span>
+                </div>
+                <img class="img-responsive article-home-img" src="{{ article.imageURL }}" alt="{{article.imageURL}}" style="width: 100%; height: auto;" />
+                <div *ngIf="!active">
+                    <button (click)="addArticle(article.id)" class="btn btn-block btn-success" jhiTranslate="home.addArticle"></button>
+                    <button (click)="deleteArticle(article.id)" class="btn btn-block btn-danger" jhiTranslate="home.deleteArticle"></button>
+                </div>
+
+
+                <hr>
+            </div>
+        </div>
+
+
+
+        <div *ngIf="articles && articles.length">
+            <div class="row justify-content-center">
+                <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5"
+                                [itemsPerPage]="itemsPerPage"></jhi-item-count>
+            </div>
+            <div class="row justify-content-center">
+                <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5"
+                                [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="col-md-3">
+
+    </div>
+</div>

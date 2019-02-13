@@ -1,0 +1,71 @@
+TITLE_MIN_LENGTH = 1
+TITLE_MAX_LENGTH = 30
+COMMENT_MIN_LENGTH = 1
+COMMENT_MAX_LENGTH = 1000
+entity Article {
+	id Long
+	title String minlength(TITLE_MIN_LENGTH) maxlength(TITLE_MAX_LENGTH) required
+    creationDate LocalDate
+    modificationDate LocalDate
+	content String required
+	imageURL String required
+	views Integer
+}
+entity Comment {
+	id Long
+    content String minlength(COMMENT_MIN_LENGTH) maxlength(COMMENT_MAX_LENGTH) required
+    creationDate LocalDate
+    modificationDate LocalDate
+}
+entity Rate {
+	id Long
+    value Boolean
+}
+entity Interest {
+	id Long
+    name String required
+}
+entity Category {
+	id Long
+    name String required
+}
+entity Tag {
+	id Long
+    name String required
+}
+entity Message {
+	id Long
+    content String required
+    creationDate LocalDate
+}
+relationship ManyToOne {
+	Article{user(login)} to User
+}
+relationship ManyToOne {
+	Comment{user(login)} to User
+}
+relationship ManyToOne {
+	Comment{article} to Article
+}
+relationship ManyToOne {
+	Article{category} to Category
+}
+relationship ManyToMany {
+	Article{tag} to Tag
+}
+relationship OneToOne {
+	Rate{article} to Article,
+    Rate{user} to User
+}
+relationship ManyToMany {
+	Article{Interest} to Interest
+}
+relationship OneToOne {
+	Message{sender} to User
+    Message{receiver} to User
+}
+dto * with mapstruct
+paginate Article with pagination
+search Article with elasticsearch
+search Comment with elasticsearch
+service all with serviceClass except Rate, Interest, Category, Tag

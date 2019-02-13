@@ -1,0 +1,35 @@
+<form name="editForm" (ngSubmit)="save()" (keydown)="quickSend($event)">
+
+    <div class="form-group">
+        <label class="form-control-label" jhiTranslate="articleSharingApp.comment.invite"
+               for="field_content">Content</label>
+        <textarea type="text" class="form-control" name="commentContent" id="field_content"
+                  [(ngModel)]="commentContent" required minlength="1" maxlength="1000"></textarea>
+    </div>
+
+    <div>
+        <button type="submit" id="save-entity" class="btn btn-primary">
+            <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>
+
+<div class="comment-header">
+    <h2> {{commentsWithUser.length}} <span jhiTranslate="articleSharingApp.comment.comments"></span> </h2>
+</div>
+
+<div class="row" *ngFor="let comment of commentsWithUser ;trackBy: trackId">
+    <div class="col-2"><p class="nick"> {{comment.userNick}} </p></div>
+    <div class="col-8">
+        <span class="article-header"><span class="article-header-translate" jhiTranslate="articleSharingApp.article.detail.creationTime"></span> {{comment.creationDate | date:'short'}} </span>
+        <span class="article-header"><span class="article-header-translate" jhiTranslate="articleSharingApp.article.detail.modified"></span> {{comment.modificationDate | date:'short'}} </span>
+    </div>
+    <div class="col-2"></div>
+    <div class="col-2">
+            <img [src]="comment.userAvatar" class="profile-image img-circle" alt="Avatar">
+    </div>
+    <div class="col-10 content">
+        <span class="comment-content"> {{ comment.content }} </span>
+    </div>
+
+</div>

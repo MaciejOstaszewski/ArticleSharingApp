@@ -1,0 +1,23 @@
+
+{
+    "articleSharingApp": {
+        "interest" : {
+            "home": {
+                "title": "Interests",
+                "createLabel": "Dodaj Interest",
+                "createOrEditLabel": "Dodaj lub edytuj: Interest",
+                "search": "Szukaj Interest"
+            },
+            "created": "Utworzono nowy Interest z identyfikatorem {{ param }}",
+            "updated": "Uaktualniono Interest z identyfikatorem {{ param }}",
+            "deleted": "Usunięto Interest z identyfikatorem {{ param }}",
+            "delete": {
+                "question": "Czy na pewno chcesz usunąć Interest {{ id }}?"
+            },
+            "detail": {
+                "title": "Interest"
+            },
+            "name": "Name"
+        }
+    }
+}

@@ -1,0 +1,73 @@
+<div>
+    <button class="btn btn-info" *ngIf="!searchMode; else search" (click)="loadLoggedUserFriendsProposition()">
+        <span jhiTranslate="articleSharingApp.friends.searchFriends">My Friends</span>
+    </button>
+    <ng-template #search>
+        <button class="btn btn-info" (click)="loadLoggedUserFriends()">
+            <span jhiTranslate="articleSharingApp.friends.myFriends">Search friends</span>
+        </button>
+    </ng-template>
+
+
+
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <form name="searchForm" class="form-inline">
+            <div class="input-group w-100 mt-3">
+                <input type="text" class="form-control" [(ngModel)]="filter" id="currentSearch" name="currentSearch" placeholder="{{ 'articleSharingApp.friends.search' | translate }}">
+                <button class="input-group-append btn btn-danger" (click)="clearSearchFilter()" *ngIf="filter">
+                    <fa-icon [icon]="'trash-alt'"></fa-icon>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+<div *ngIf="users">
+    <h1 *ngIf="!searchMode" jhiTranslate="articleSharingApp.friends.friendsList"></h1>
+    <h1 *ngIf="searchMode" jhiTranslate="articleSharingApp.friends.strangersList"></h1>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th ></th>
+            <th ><span jhiTranslate="articleSharingApp.friends.name">name</span></th>
+            <th ><span jhiTranslate="articleSharingApp.friends.firstname">firstname</span></th>
+            <th ><span jhiTranslate="articleSharingApp.friends.lastname">lastname</span></th>
+            <th ></th>
+        </tr>
+        </thead>
+        <tbody>
+        <ng-container *ngFor="let user of (users | filterFriends:filter) ;trackBy: trackId">
+            <tr *ngIf="!checkUser(user)">
+                <td><img [src]="user.avatar" class="profile-image img-circle" alt="Avatar"> </td>
+                <td>{{user.login}}</td>
+                <td>{{user.firstName}}</td>
+                <td>{{user.lastName}}</td>
+                <td>
+                    <button class="btn btn-danger" (click)="delete(user.id)" *ngIf="!searchMode">
+                        <span jhiTranslate="articleSharingApp.friends.delete"></span>
+                    </button>
+                    <div [ngSwitch]="checkInvites(user)" *ngIf="searchMode">
+
+                        <button class="btn btn-default" *ngSwitchCase="1" disabled>
+                            <span jhiTranslate="articleSharingApp.friends.invited"></span>
+                        </button>
+                        <button class="btn btn-success" (click)="accept(user.id)" *ngSwitchCase="2" >
+                            <span jhiTranslate="articleSharingApp.friends.accept"></span>
+                        </button>
+                        <button class="btn btn-info" (click)="invite(user.id)" *ngSwitchCase="3">
+                            <span jhiTranslate="articleSharingApp.friends.invite"></span>
+                        </button>
+
+                    </div>
+
+
+                </td>
+            </tr>
+
+
+        </ng-container>
+        </tbody>
+    </table>
+
+</div>

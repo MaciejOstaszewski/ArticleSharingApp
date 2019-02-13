@@ -1,0 +1,45 @@
+{
+    "articleSharingApp": {
+        "article": {
+            "home": {
+                "title": "Artykuły",
+                "createLabel": "Dodaj Artykuł",
+                "createOrEditLabel": "Dodaj lub edytuj Artykuł",
+                "createArticleLabel": "Dodaj Artykuł",
+                "search": "Szukaj"
+            },
+            "created": "Utworzono nowy Artykuł z identyfikatorem {{ param }}",
+            "updated": "Uaktualniono Artykuł z identyfikatorem {{ param }}",
+            "deleted": "Usunięto Artykuł z identyfikatorem {{ param }}",
+            "delete": {
+                "question": "Czy na pewno chcesz usunąć Artykuł {{ id }}?"
+            },
+            "detail": {
+                "title": "Artykuł",
+                "added": "Dodano przez: ",
+                "creationTime": "Utworzono: ",
+                "modified": "Zmodyfikowano: ",
+                "propositions": "Zobacz również!",
+                "rate": {
+                    "invite": "Zostaw ocenę!",
+                    "button": "Oceń",
+                    "rated": "Dzięki za zostawnienie oceny!"
+                }
+            },
+            "title": "Tytuł",
+            "creationDate": "Data utworzenia",
+            "modificationDate": "Data modyfikacji",
+            "content": "Treść",
+            "imageURL": "Główne zdjęcie",
+            "views": "Wyświetlenia",
+            "user": "Autor",
+            "category": "Kategorie",
+            "tag": "Tagi",
+            "interest": "Zainteresowania",
+            "form": {
+                "end": "Dziękujemy za dodanie arytkułu, poczekaj aż zostanie dodany przez administratora, tymczasem zapraszamy na ",
+                "end-link": "stronę główną"
+            }
+        }
+    }
+}

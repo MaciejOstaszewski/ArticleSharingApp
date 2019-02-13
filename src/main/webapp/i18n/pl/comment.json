@@ -1,0 +1,31 @@
+
+{
+    "articleSharingApp": {
+        "comment" : {
+            "home": {
+                "title": "Comments",
+                "createLabel": "Dodaj Comment",
+                "createOrEditLabel": "Dodaj lub edytuj: Comment",
+                "search": "Szukaj Comment"
+            },
+            "created": "Utworzono nowy Comment z identyfikatorem {{ param }}",
+            "updated": "Uaktualniono Comment z identyfikatorem {{ param }}",
+            "deleted": "Usunięto Comment z identyfikatorem {{ param }}",
+            "delete": {
+                "question": "Czy na pewno chcesz usunąć Comment {{ id }}?"
+            },
+            "detail": {
+                "title": "Comment"
+            },
+            "content": "Content",
+            "creationDate": "Creation Date",
+            "modificationDate": "Modification Date",
+            "user": "User",
+            "article": "Article",
+            "invite": "Zostaw Komentarz!",
+            "inviteForNotLogged": "Zaloguj się, jeżeli chcesz skomentować!",
+            "comments": "Komentarzy"
+
+        }
+    }
+}

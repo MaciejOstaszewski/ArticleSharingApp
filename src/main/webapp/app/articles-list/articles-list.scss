@@ -1,0 +1,66 @@
+/* ==========================================================================
+Main page styles
+========================================================================== */
+
+//.hipster {
+//    display: inline-block;
+//    width: 347px;
+//    height: 497px;
+//    background: url('../../content/images/hipster.png') no-repeat center top;
+//    background-size: contain;
+//}
+.article-main-img {
+    display: inline-block;
+    width: 800px;
+    height: 500px;
+    //background: url('../../content/images/download.png') no-repeat center top;
+    //background-size: contain;
+}
+
+.article-home-img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.article-home-container {
+    &:hover {
+        cursor: pointer;
+    }
+}
+/* wait autoprefixer update to allow simple generation of high pixel density media query */
+@media only screen and (-webkit-min-device-pixel-ratio: 2),
+    only screen and (min--moz-device-pixel-ratio: 2),
+    only screen and (-o-min-device-pixel-ratio: 2/1),
+    only screen and (min-device-pixel-ratio: 2),
+    only screen and (min-resolution: 192dpi),
+    only screen and (min-resolution: 2dppx) {
+    .hipster {
+        background: url('../../content/images/hipster2x.png') no-repeat center top;
+        background-size: contain;
+    }
+}
+.tags {
+    color: #008fe5;
+    margin-left: 8px;
+    &:hover {
+        color: #00b6ff;
+        cursor: pointer;
+    }
+}
+
+.category {
+    margin-right: 8px;
+    color: #d66053;
+    &:hover {
+        color: #ff8982;
+        cursor: pointer;
+    }
+}
+.article-header {
+    margin-right: 8px;
+}
+
+.article-header-translate {
+    color: #13973a;
+}

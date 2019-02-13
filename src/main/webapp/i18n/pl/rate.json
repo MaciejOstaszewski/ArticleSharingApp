@@ -1,0 +1,25 @@
+
+{
+    "articleSharingApp": {
+        "rate" : {
+            "home": {
+                "title": "Rates",
+                "createLabel": "Dodaj Rate",
+                "createOrEditLabel": "Dodaj lub edytuj: Rate",
+                "search": "Szukaj Rate"
+            },
+            "created": "Utworzono nowy Rate z identyfikatorem {{ param }}",
+            "updated": "Uaktualniono Rate z identyfikatorem {{ param }}",
+            "deleted": "Usunięto Rate z identyfikatorem {{ param }}",
+            "delete": {
+                "question": "Czy na pewno chcesz usunąć Rate {{ id }}?"
+            },
+            "detail": {
+                "title": "Rate"
+            },
+            "value": "Value",
+            "article": "Article",
+            "user": "User"
+        }
+    }
+}

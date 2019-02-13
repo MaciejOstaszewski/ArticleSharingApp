@@ -1,0 +1,46 @@
+
+{
+    "articleSharingApp": {
+        "article" : {
+            "home": {
+                "title": "Articles",
+                "createLabel": "Create a new Article",
+                "createOrEditLabel": "Create or edit a Article",
+                "createArticleLabel": "Create Article",
+                "search": "Search for Article"
+            },
+            "created": "A new Article is created with identifier {{ param }}",
+            "updated": "A Article is updated with identifier {{ param }}",
+            "deleted": "A Article is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Article {{ id }}?"
+            },
+            "detail": {
+                "title": "Article",
+                "added": "Added by: ",
+                "creationTime": "Created: ",
+                "modified": "Modified: ",
+                "propositions": "See also!",
+                "rate": {
+                    "invite": "Please leave your rate!",
+                    "button": "Rate",
+                    "rated": "Thank you for rate!"
+                }
+            },
+            "title": "Title",
+            "creationDate": "Creation Date",
+            "modificationDate": "Modification Date",
+            "content": "Content",
+            "imageURL": "Image URL",
+            "views": "Views",
+            "user": "User",
+            "category": "Category",
+            "tag": "Tag",
+            "interest": "Interest",
+            "form": {
+                "end": "Thank you for adding article, wait until it was been verified by administrator, meanwhile go and check other articles ",
+                "end-link": " on main page"
+            }
+        }
+    }
+}

@@ -1,0 +1,44 @@
+.friend {
+    padding: 15px;
+    display: block;
+    &:hover {
+        background: #d5f5fc;
+        cursor: pointer;
+    }
+}
+.friends-list {
+    width: 100%;
+    display: block;
+}
+
+.current-logged-user-message {
+    float: right;
+    clear: right;
+    background: #3e8acc;
+}
+
+.friend-message {
+    float: left;
+    clear: left;
+
+    background: #b3d4fc;
+}
+
+.message {
+    border-radius: 10%;
+    padding: 5px;
+    margin: 2px;
+}
+
+.message-content {
+}
+
+.selected {
+    background: #b8fdbf;
+}
+.profile-image {
+    margin: -10px 0px;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+}

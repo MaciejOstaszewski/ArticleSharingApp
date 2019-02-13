@@ -1,0 +1,19 @@
+{
+    "articleSharingApp": {
+        "friends": {
+            "search": "Szukaj znajomych",
+            "title": "Dodaj znajomych",
+            "name": "Nick",
+            "firstname": "Imię",
+            "lastname": "Nazwisko",
+            "invite": "Wyślij zaproszenie",
+            "invited": "Zaproszenie zostało wysłane",
+            "myFriends": "Moi znajomi",
+            "searchFriends": "Szukaj nowych znajomych",
+            "delete": "Usuń ze znajomych",
+            "friendsList": "Lista znajomych",
+            "strangersList": "Dodaj nowych znajomych",
+            "accept": "Potwierdź zaproszenie"
+        }
+    }
+}

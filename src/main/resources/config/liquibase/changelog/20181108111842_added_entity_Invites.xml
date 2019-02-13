@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+
+    <changeSet id="20181108111842-1" author="ostaszewskim">
+            <createTable tableName="invites">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="friend_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+
+
+        </createTable>
+
+        <createTable tableName="invites_from_strangers">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="friend_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="read" type="boolean">
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+
+
+
+
+    </changeSet>
+
+</databaseChangeLog>

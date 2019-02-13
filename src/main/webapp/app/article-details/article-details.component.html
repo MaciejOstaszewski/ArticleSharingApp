@@ -1,0 +1,70 @@
+<div class="row">
+    <div class="col-md-3">
+
+    </div>
+
+    <div class="col-md-6">
+
+        <div class="article-title-container">
+            <h1>{{ article.title }}</h1>
+            <div>
+                <span class="article-header"><span class="article-header-translate"
+                                                   jhiTranslate="articleSharingApp.article.detail.added"></span> {{ article.userLogin }} </span>
+                <span class="article-header"><span class="article-header-translate"
+                                                   jhiTranslate="articleSharingApp.article.detail.creationTime"></span> {{ article.creationDate | date:'short' }} </span>
+                <span class="article-header"><span class="article-header-translate"
+                                                   jhiTranslate="articleSharingApp.article.detail.modified"></span> {{ article.modificationDate | date:'short'  }} </span>
+                <span class="article-header"><fa-icon [icon]="'eye'"></fa-icon> {{ article.views }} </span>
+            </div>
+            <div>
+                <span class="category" (click)="loadFromCategory(category.id)"> {{ category.name }} </span>
+                <span class="tags" (click)="loadFromTag(tag.id)" *ngFor="let tag of article.tags"> #{{tag.name}} </span>
+
+                <!--<span class="intersts" *ngFor="let interest of article.interests">{{interest.name}}</span>-->
+            </div>
+        </div>
+
+
+        <img class="img-responsive article-img" src="{{ article.imageURL }}" alt="{{article.imageURL}}"/>
+
+
+        <div [innerHTML]="article.content"></div>
+
+
+        <hr>
+
+
+        <span jhiTranslate="articleSharingApp.article.detail.rate.invite"></span>
+
+        <star-rating-comp class="rating" [hoverEnabled]="true" [starType]="'icon'" [size]="'large'"
+                          (onRatingChange)="getRateFromInput($event)" [rating]="rateValue"
+                          [disabled]="disabled"></star-rating-comp>
+        <span class="avg-rate">{{ average }}</span>
+        <button [disabled]="checkIfRateIsBiggerThanZero() || rateButton" class="btn btn-success"
+                (click)="rateArticle()">
+            <span jhiTranslate="articleSharingApp.article.detail.rate.button"></span>
+        </button>
+        <span *ngIf="rated" jhiTranslate="articleSharingApp.article.detail.rate.rated"></span>
+
+        <hr>
+
+        <h1 jhiTranslate="articleSharingApp.article.detail.propositions">></h1>
+        <div class="row">
+            <div *ngFor="let article of suggestedArticles ;trackBy: trackId" class="col-sm-4">
+                <div [routerLink]="['/article/detail', article.id]" >
+                    <h6 (click)="showArticle(article.id)">{{ article.title }}</h6>
+                    <img class="img-responsive suggested-img" src="{{ article.imageURL }}" alt="{{article.imageURL}}"
+                         style="width: 100%; height: auto;"/>
+                </div>
+            </div>
+        </div>
+        <hr>
+
+        <jhi-article-details-comment [articleId]="article.id"></jhi-article-details-comment>
+
+        </div>
+
+        <div class="col-md-3">
+
+        </div>
+    </div>

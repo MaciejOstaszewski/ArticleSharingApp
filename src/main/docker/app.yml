@@ -1,0 +1,20 @@
+version: '2'
+services:
+    articlesharingapp-app:
+        image: articlesharingapp
+        environment:
+            # - _JAVA_OPTIONS=-Xmx512m -Xms256m
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:postgresql://articlesharingapp-postgresql:5432/ArticleSharingApp
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+            - SPRING_DATA_ELASTICSEARCH_CLUSTER_NODES=articlesharingapp-elasticsearch:9300
+        ports:
+            - 8080:8080
+    articlesharingapp-postgresql:
+        extends:
+            file: postgresql.yml
+            service: articlesharingapp-postgresql
+    articlesharingapp-elasticsearch:
+        extends:
+            file: elasticsearch.yml
+            service: articlesharingapp-elasticsearch

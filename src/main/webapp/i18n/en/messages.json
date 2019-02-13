@@ -1,0 +1,9 @@
+{
+    "articleSharingApp": {
+        "messages": {
+            "title": "Messages",
+            "send": "Send",
+            "invite": "You're friends right now, say hello!"
+        }
+    }
+}
