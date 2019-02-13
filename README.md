@@ -169,5 +169,5 @@ To configure CI for your project, run the ci-cd sub-generator (`jhipster ci-cd`)
 To run ElasticSearch type:
 docker-compose -f src/main/docker/elasticsearch.yml up -d
 
-https://github.com/MaciejOstaszewski/ArticleSharingApp/tree/master/src/main/resources/images/asa1.jpg
-![Alt text](https://github.com/MaciejOstaszewski/ArticleSharingApp/tree/master/src/main/resources/images/asa1.jpg?raw=true "Title")
+
+<img src="https://github.com/MaciejOstaszewski/ArticleSharingApp/tree/master/src/main/resources/images/asa1.jpg" title="perview">
